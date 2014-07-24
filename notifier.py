@@ -37,10 +37,10 @@ lastPost = 0
 req = urllib.request.Request(url, headers={"User-Agent": "reddit-new-post-notifier"})
 while True:
     data = urllib.request.urlopen(req)
-    pattern = re.compile("\"title\": \"(?P<Name>[^\"]*)\".*\"created_utc\": (?P<Number>[0-9]+)")
+    pattern = re.compile("\"title\": \"(?P<Name>[^\"]*)\".*\"created_utc\": (?P<Time>[0-9]+)")
     match = pattern.search(str(data.read()))
-    if int(match.group("Number")) > lastPost:
-        lastPost = int(match.group("Number"))
+    if int(match.group("Time")) > lastPost:
+        lastPost = int(match.group("Time"))
         on_new_post(match.group("Name"), lastPost)
     time.sleep(delay)
 
