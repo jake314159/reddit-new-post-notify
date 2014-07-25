@@ -4,11 +4,9 @@ def _(p,t):
 l=0
 u=urllib.request
 while 1:
-	d=u.urlopen(u.Request("http://www.reddit.com/r/funny/new.json?sort=new",headers={"User-Agent":""}))
-	p=re.compile('title": "(?P<N>[^"]*)".*utc.*(?P<T>[0-9]+)')
-	m=p.search(str(d.read()))
+	m=re.compile('title": "(?P<N>[^"]*)".*utc.*(?P<T>[0-9]+)').search(str(u.urlopen(u.Request("http://www.reddit.com/r/funny/new.json?sort=new",headers={"User-Agent":""})).read()))
 	t=int(m.group("T"))
 	if t>l:
 		l=t
 		_(m.group("N"),l)
-	time.sleep(60)
+	time.sleep(90)
