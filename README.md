@@ -25,4 +25,4 @@ notifier_small.py
 In addition to the main script (notifier.py) there is also a mini version which aims to have the smallest source code possible while still having the same functionality of the main program. You should however almost always use the full version so you can safely ignore this.
 
 Notifier mini size:
-    323 bytes
+    316 bytes
